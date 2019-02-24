@@ -1,7 +1,8 @@
 import React from 'react';
 import Card from './Card';
+import apiConfig from './apiKeys';
 
-const weatherURL = "http://api.openweathermap.org/data/2.5/forecast?id=5128638&APPID=b5dd3702f6bc36a4fbeb45b3ab927dd8&cnt=7"
+const weatherURL = "http://api.openweathermap.org/data/2.5/forecast?id=5128638&cnt=7&APPID=" + apiConfig.openWeatherMapKey
 
 class WeekContainer extends React.Component {
   state = {
@@ -20,8 +21,13 @@ class WeekContainer extends React.Component {
 
   render() {
     return (
-      <div>
-      {this.formatCards()}
+      <div className="container">
+      <h1 className="display-1">5-Day Forecast.</h1>
+        <div className="row">
+
+          {this.formatCards()}
+
+        </div>
       </div>
     )
   }

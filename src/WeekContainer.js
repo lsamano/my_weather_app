@@ -2,7 +2,7 @@ import React from 'react';
 import Card from './Card';
 import apiConfig from './apiKeys';
 
-const weatherURL = "http://api.openweathermap.org/data/2.5/forecast?id=5128638&cnt=12&APPID=" + apiConfig.openWeatherMapKey
+const weatherURL = "http://api.openweathermap.org/data/2.5/forecast?zip=10302,us&units=imperial&APPID=" + apiConfig.openWeatherMapKey
 
 class WeekContainer extends React.Component {
   state = {
@@ -12,7 +12,11 @@ class WeekContainer extends React.Component {
   componentDidMount = () => {
     fetch(weatherURL)
     .then(res => res.json())
-    .then(data => this.setState({days: data.list}, console.log("Data List Loaded", data.list)))
+    .then(data => {
+      console.log("Data List Loaded", data.list)
+      const dailyData = data.list.filter(reading => reading.dt_txt.includes("18:00:00"))
+      this.setState({days: dailyData})
+    })
   }
 
   formatCards = () => {

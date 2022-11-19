@@ -9,7 +9,7 @@
     "moment": "^2.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "2.1.5",
+    "react-scripts": "5.0.1",
     "semantic-ui": "^2.4.2"
   },
   "scripts": {
